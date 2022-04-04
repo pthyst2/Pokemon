@@ -8,54 +8,8 @@ import { BeastService } from 'src/app/services/data/beast.service';
 export class HomeComponent implements OnInit {
   loading = true;
   videos: any = [];
-  pokemons: any = [
-    {
-      name: 'Pong Kyubi 00',
-      image:
-        'https://media.relife.vn/resize/960x576/files/content/2021/12/10/vo-huynh-ngoc-phung-pong-kyubi-sexy-nong-bong-1-10110043.jpg',
-    },
-    {
-      name: 'Pong Kyubi 01',
-      image: 'https://pbs.twimg.com/media/E_36VAAVgAg5d2B.jpg',
-    },
-    {
-      name: 'Pong Kyubi 02',
-      image:
-        'https://media.relife.vn/files/content/2021/12/10/anh-nong-vo-huynh-ngoc-phung-pong-kyubi-noi-y-17-min-10182229.jpg',
-    },
-    {
-      name: 'Pong Kyubi 03',
-      image:
-        'https://cobesinsu.com/wp-content/uploads/2021/12/Pong-Kyubi-Onlyfan-nong-bong-voi-loat-anh-sexy-18.jpeg',
-    },
-    {
-      name: 'Pong Kyubi 04',
-      image: 'https://i.redd.it/zjf53vewl9s71.jpg',
-    },
-    {
-      name: 'Pong Kyubi 05',
-      image: 'https://pbs.twimg.com/media/FFmYCitaUAEGYOb.jpg',
-    },
-    {
-      name: 'Pong Kyubi 06',
-      image: 'https://i.redd.it/qvmyhydvm5f71.jpg',
-    },
-    {
-      name: 'Pong Kyubi 07',
-      image:
-        'https://64.media.tumblr.com/9a7fb52c35611b80ee688b9dc970e28e/784f5bd8d63da20b-3f/s400x600/026425aabe27d487768468029a02fe12f2541791.jpg',
-    },
-    {
-      name: 'Pong Kyubi 08',
-      image:
-        'https://cdn3.nude-pics.org/pong-kyubi-vietnamese-celebrity-dJoIYXB3ZC/pong-kyubi-vietnamese-celebrity.webp',
-    },
-    {
-      name: 'Pong Kyubi 09',
-      image:
-        'https://cdn6.redxxx.cc/picture/original/nUE0pUZ6Yl9cYaWyMTDhnKDiZ3Z5MUqho_Z-MTf3ZF5dpTpcXltbHzIxJSuLYzAwXI8mpmyxq_5iLmuxnmpkYzcjMj3p9W/(RedXXX.cc)_pong-pong-preview.jpg',
-    },
-  ];
+  pokemons: any = [];
+  limits = 10;
   constructor(private beastService: BeastService) {}
 
   ngOnInit(): void {
@@ -83,13 +37,33 @@ export class HomeComponent implements OnInit {
       (res: any) => {
         this.loading = false;
         let data = res.results;
-        this.pokemons = data;
-        console.log('this.pokemons: ', this.pokemons);
+
+        console.log('res: ', res);
+        this.handlePokemons(data);
       },
       (err) => {
         this.loading = false;
         console.error('Error when getting beast list: ', err.error.message);
       }
     );
+  }
+  handlePokemons(data: any) {
+    this.pokemons = [];
+    for (let d of data) {
+      if (this.pokemons.length < this.limits) {
+        let pokemonId = d.url
+          .replace('https://pokeapi.co/api/v2/pokemon/', ' ')
+          .replace('/', ' ')
+          .trim();
+
+        this.pokemons.push({
+          name: d.name,
+          url: d.url,
+          image: 'assets/images/pokemons/' + pokemonId + '.png',
+        });
+      } else {
+        break;
+      }
+    }
   }
 }
