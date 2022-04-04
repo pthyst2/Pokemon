@@ -11,6 +11,9 @@ export class BeastService {
   getList(): Observable<any> {
     return this.http.get(this.route);
   }
+  getById(id: any): Observable<any> {
+    return this.http.get(this.route + id);
+  }
   search(data: any): Observable<any> {
     return this.http.post(this.route + 'search/', data);
   }

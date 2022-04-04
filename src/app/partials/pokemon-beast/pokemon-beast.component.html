@@ -1,5 +1,5 @@
 <ng-template [ngIf]="beast">
-  <div class="pokemon-beast w100 p-4 rounded-sm">
+  <div class="pokemon-beast w100 p-4 rounded-sm" (click)="openDetail()">
     <img src="{{ beast.image }}" class="mb-4" />
     <p class="name">{{ beast.name }}</p>
   </div>

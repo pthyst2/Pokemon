@@ -1,1 +1,14 @@
 @import "../../../assets/scss/custom.scss";
+.modal-body {
+  img {
+    width: 100%;
+    height: 10rem;
+    object-fit: contain;
+  }
+  ul {
+    li {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

@@ -37,8 +37,6 @@ export class HomeComponent implements OnInit {
       (res: any) => {
         this.loading = false;
         let data = res.results;
-
-        console.log('res: ', res);
         this.handlePokemons(data);
       },
       (err) => {
@@ -57,6 +55,7 @@ export class HomeComponent implements OnInit {
           .trim();
 
         this.pokemons.push({
+          _id: pokemonId,
           name: d.name,
           url: d.url,
           image: 'assets/images/pokemons/' + pokemonId + '.png',

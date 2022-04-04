@@ -1,1 +1,41 @@
-<div class="modal-header"></div>
+<div class="modal-header">
+  <ng-template [ngIf]="loading == true">
+    <span class="title">Loading pokemon info ...</span>
+  </ng-template>
+  <ng-template [ngIf]="loading == false">
+    <span class="title">{{ beast.name }}</span>
+  </ng-template>
+  <span (click)="close()"><i class="fas fa-times"></i></span>
+</div>
+<div class="modal-body">
+  <div class="grid grid-cols-2">
+    <!-- Image -->
+    <div class="col-span-1">
+      <img [src]="beast.image" />
+    </div>
+    <!-- end of image -->
+    <!-- Info -->
+    <div class="col-spans-1">
+      <ng-template [ngIf]="info">
+        <ul>
+          <li>
+            <strong>Name</strong><span>{{ info.name }}</span>
+          </li>
+          <li>
+            <strong>Height</strong><span>{{ info.height }}</span>
+          </li>
+          <li>
+            <strong>Weight</strong><span>{{ info.weight }}</span>
+          </li>
+        </ul>
+      </ng-template>
+      <ng-template [ngIf]="!info">
+        <p>No data found.</p>
+      </ng-template>
+    </div>
+    <!-- end of info -->
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" (click)="close()">Close</button>
+</div>
