@@ -1,0 +1,6 @@
+{
+  "/api": {
+    "target": "https://youtube-nocookie.com",
+    "secure": false
+  }
+}

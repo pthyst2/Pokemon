@@ -1,1 +1,22 @@
-<p>carousel-video works!</p>
+<div class="carousel-video">
+  <div class="button" (click)="moveLeft()">
+    <div class="icon-wrapper">
+      <i class="fas fa-angle-left"></i>
+    </div>
+  </div>
+  <drag-scroll
+    #slide
+    class="slide"
+    [scrollbar-hidden]="true"
+    [drag-scroll-y-disabled]="true"
+  >
+    <div *ngFor="let video of videos" class="video-wrapper">
+      <iframe [src]="video.source" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </drag-scroll>
+  <div class="button" (click)="moveRight()">
+    <div class="icon-wrapper">
+      <i class="fas fa-angle-right"></i>
+    </div>
+  </div>
+</div>

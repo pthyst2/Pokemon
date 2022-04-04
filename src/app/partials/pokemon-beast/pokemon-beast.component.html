@@ -1,1 +1,6 @@
-<p>pokemon-beast works!</p>
+<ng-template [ngIf]="beast">
+  <div class="pokemon-beast w100">
+    <img src="{{ beast.image }}" />
+    <p class="name">{{ beast.name }}</p>
+  </div>
+</ng-template>

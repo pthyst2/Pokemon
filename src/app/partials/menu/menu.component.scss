@@ -1,0 +1,26 @@
+@import "../../../assets/scss/custom.scss";
+.menu {
+  position: fixed;
+  top: $header-size;
+  left: 0px;
+  z-index: 1000;
+  background-color: $main-color;
+  ul {
+    list-style-type: none;
+    margin-bottom: 0px;
+    li {
+      display: inline-block;
+      a {
+        display: block;
+        text-decoration: none;
+        padding: 0.5rem 0.75rem;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 1rem;
+        &:hover {
+          background-color: $main-color-dark;
+        }
+      }
+    }
+  }
+}

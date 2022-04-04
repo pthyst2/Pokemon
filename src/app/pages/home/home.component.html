@@ -1,1 +1,33 @@
-<p>home works!</p>
+<app-menu></app-menu>
+<div class="home w100">
+  <div class="videos-wrapper">
+    <app-carousel-video [videos]="videos"></app-carousel-video>
+  </div>
+  <div class="w90">
+    <ng-template [ngIf]="loading == false">
+      <section>
+        <div class="title-wrapper">
+          <p class="title">Pókemons</p>
+          <button type="button">See more</button>
+        </div>
+        <div class="content">
+          <ng-template [ngIf]="pokemons && pokemons.length > 0">
+            <div
+              class="grid 2xl:grid-cols-4 xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1"
+            >
+              <div
+                *ngFor="let pokemon of pokemons"
+                class="col-span-1 px-2 mb-4"
+              >
+                <app-pokemon-beast [beast]="pokemon"></app-pokemon-beast>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </section>
+    </ng-template>
+    <ng-template [ngIf]="loading == true">
+      <app-loading></app-loading>
+    </ng-template>
+  </div>
+</div>
