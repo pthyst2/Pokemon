@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './partials/header/header.component';
@@ -30,7 +30,13 @@ import { BeastDetailComponent } from './modals/beast-detail/beast-detail.compone
     LoadingComponent,
     BeastDetailComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, DragScrollModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    DragScrollModule,
+    HttpClientModule,
+  ],
   providers: [CookieService],
   bootstrap: [AppComponent],
 })

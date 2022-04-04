@@ -1,11 +1,20 @@
 <app-menu></app-menu>
 <div class="home w100">
-  <div class="videos-wrapper">
-    <app-carousel-video [videos]="videos"></app-carousel-video>
+  <div class="w100">
+    <section class="videos">
+      <div class="w90">
+        <div class="title-wrapper">
+          <p class="title">Trailers</p>
+        </div>
+      </div>
+      <div class="videos-wrapper">
+        <app-carousel-video [videos]="videos"></app-carousel-video>
+      </div>
+    </section>
   </div>
   <div class="w90">
     <ng-template [ngIf]="loading == false">
-      <section>
+      <section class="pokemons">
         <div class="title-wrapper">
           <p class="title">Pókemons</p>
           <button type="button">See more</button>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { BeastService } from 'src/app/services/data/beast.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -56,21 +56,13 @@ export class HomeComponent implements OnInit {
         'https://cdn6.redxxx.cc/picture/original/nUE0pUZ6Yl9cYaWyMTDhnKDiZ3Z5MUqho_Z-MTf3ZF5dpTpcXltbHzIxJSuLYzAwXI8mpmyxq_5iLmuxnmpkYzcjMj3p9W/(RedXXX.cc)_pong-pong-preview.jpg',
     },
   ];
-  constructor() {}
+  constructor(private beastService: BeastService) {}
 
   ngOnInit(): void {
-    this.getData();
+    this.setupVideos();
+    this.loadPokemons();
   }
-
-  getData() {
-    this.getVideos();
-    this.getPokeBeats();
-    setTimeout(() => {
-      this.loading = false;
-    }, 1000);
-  }
-
-  getVideos() {
+  setupVideos() {
     this.videos = [
       {
         source: 'https://www.youtube.com/watch?v=D0zYJ1RQ-fs',
@@ -86,6 +78,18 @@ export class HomeComponent implements OnInit {
       },
     ];
   }
-
-  getPokeBeats() {}
+  loadPokemons() {
+    this.beastService.getList().subscribe(
+      (res: any) => {
+        this.loading = false;
+        let data = res.results;
+        this.pokemons = data;
+        console.log('this.pokemons: ', this.pokemons);
+      },
+      (err) => {
+        this.loading = false;
+        console.error('Error when getting beast list: ', err.error.message);
+      }
+    );
+  }
 }
