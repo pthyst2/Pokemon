@@ -1,4 +1,32 @@
-<nav class="menu w100">
+<nav class="menu menu-large w100">
+  <ul class="w90">
+    <li>
+      <p class="cat">Games</p>
+      <ng-template [ngIf]="games && games.length > 0">
+        <ul class="sub-menu">
+          <li *ngFor="let game of games">
+            <p class="sub">{{ game.name }}</p>
+          </li>
+        </ul>
+      </ng-template>
+    </li>
+    <li>
+      <p class="cat">Generations</p>
+      <ng-template [ngIf]="generations && generations.length > 0">
+        <ul class="sub-menu">
+          <li *ngFor="let generations of generations">
+            <p class="sub">
+              {{ generations.name }}
+            </p>
+          </li>
+        </ul>
+      </ng-template>
+    </li>
+    <li><p class="cat">Locations</p></li>
+    <li><p class="cat">Items</p></li>
+  </ul>
+</nav>
+<nav class="menu menu-mobile w100">
   <ul class="w90">
     <li><a [routerLink]="['/home']">Games</a></li>
     <li><a [routerLink]="['/home']">Generations</a></li>

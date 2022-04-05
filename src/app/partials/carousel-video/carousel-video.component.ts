@@ -8,8 +8,7 @@ import { DragScrollComponent } from 'ngx-drag-scroll';
   styleUrls: ['./carousel-video.component.scss'],
 })
 export class CarouselVideoComponent implements OnInit {
-  @ViewChild('slide', { read: DragScrollComponent })
-  slide!: DragScrollComponent;
+  @ViewChild('slide', { read: DragScrollComponent }) slide: any;
   @Input() videos: any = [];
 
   constructor(private cookie: CookieService, private domSan: DomSanitizer) {}

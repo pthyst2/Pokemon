@@ -10,7 +10,9 @@
     margin-bottom: 0px;
     li {
       display: inline-block;
-      a {
+
+      .cat {
+        cursor: pointer;
         display: block;
         text-decoration: none;
         padding: 0.5rem 0.75rem;
@@ -23,4 +25,50 @@
       }
     }
   }
+}
+.menu-large {
+  @media (max-width: 767.98px) {
+    display: none;
+  }
+  ul {
+    li {
+      position: relative;
+      .sub-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0rem;
+        background-color: #fff;
+        box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.2);
+        min-width: 30vw;
+        li {
+          display: inline-block;
+          min-width: 10vw;
+          .sub {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            color: #000;
+            font-size: 1rem;
+            cursor: pointer;
+            text-transform: capitalize;
+            &:hover {
+              font-weight: 600;
+              color: $main-color;
+            }
+          }
+        }
+      }
+      &:hover {
+        .sub-menu {
+          display: block;
+        }
+      }
+    }
+  }
+}
+.menu-mobile {
+  @media (min-width: 768px) {
+    display: none;
+  }
+  background-color: $red-color;
 }
