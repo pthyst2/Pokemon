@@ -20,6 +20,9 @@ export class BeastService {
   getById(id: any): Observable<any> {
     return this.http.get(this.route + id);
   }
+  getByName(name: string): Observable<any> {
+    return this.http.get(this.route + name);
+  }
   search(data: any): Observable<any> {
     return this.http.post(this.route + 'search/', data);
   }

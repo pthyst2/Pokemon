@@ -16,6 +16,14 @@ const routes: Routes = [
     path: 'list',
     component: ListComponent,
   },
+  {
+    path: 'list/:page',
+    component: ListComponent,
+  },
+  {
+    path: 'list/:page/:limit',
+    component: ListComponent,
+  },
 ];
 
 @NgModule({

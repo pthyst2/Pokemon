@@ -2,4 +2,63 @@
 .list {
   padding-top: $header-and-menu-size;
   padding-bottom: 2rem;
+  .title {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    p {
+      color: $main-color;
+      font-size: 1.25rem;
+    }
+  }
+  .search-engine {
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    background-color: #fff;
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 0.5rem;
+      margin: 0px;
+      outline: none;
+      border: 2px solid #cdcdcd;
+      &:focus {
+        border-color: $main-color;
+      }
+    }
+    input[type="text"] {
+      box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    }
+  }
+  .pagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 2rem;
+
+    .pagi {
+      display: inline-block;
+      font-size: 0.9rem;
+      padding: 0.5rem;
+      margin: 0.5rem;
+      min-width: 2rem;
+      text-align: center;
+      line-height: 0.9rem;
+      background-color: #fff;
+      border: 1px solid #fafafa;
+      box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.2);
+      color: #000;
+      &:hover {
+        background-color: $main-color;
+        border-color: $main-color;
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+    .pagi.active {
+      background-color: $red-color;
+      border-color: $red-color;
+      color: #fff;
+    }
+  }
 }

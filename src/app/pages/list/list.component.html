@@ -1,15 +1,30 @@
 <app-menu></app-menu>
 <div class="list w100">
+  <section class="w90 title">
+    <p>List of Pokemons</p>
+  </section>
   <!-- Search engine-->
   <section class="w100 search-engine">
     <div class="w90 wrapper">
-      <input type="text" [(ngModel)]="keyword" spellcheck="false" />
-      <select [(ngModel)]="limit">
-        <option value="10">10</option>
-        <option value="20">20</option>
-        <option value="50">50</option>
-        <option value="100">100</option>
-      </select>
+      <div class="grid gap-4 grid-cols-4 sm:grid-cos-1">
+        <div class="col-span-3">
+          <input
+            type="text"
+            [ngModel]="keyword"
+            (ngModelChange)="changed($event)"
+            spellcheck="false"
+            placeholder="Bulbasaur, Charmeleon,..."
+          />
+        </div>
+        <div class="col-span-1">
+          <select [(ngModel)]="limit" (change)="goPage(page)">
+            <option value="10">10 pokemons/page</option>
+            <option value="20">20 pokemons/page</option>
+            <option value="50">50 pokemons/page</option>
+            <option value="100">100 pokemons/page</option>
+          </select>
+        </div>
+      </div>
     </div>
   </section>
   <!-- end of search engine -->
@@ -21,17 +36,31 @@
     <ng-template [ngIf]="loading == false">
       <ng-template [ngIf]="pokemons && pokemons.length > 0">
         <div
-          class="grid gap-4 2xl:grid-cols-5 xl:grid-cols-5 md:grid-cols-4 sm:grid-cols-2 xs:grid-cols-1"
+          class="grid gap-4 2xl:grid-cols-5 xl:grid-cols-5 md:grid-cols-4 sm:grid-cols-2 grid-cols-1"
         >
           <div *ngFor="let pokemon of pokemons" class="col-span-1">
             <app-pokemon-beast [beast]="pokemon"></app-pokemon-beast>
           </div>
         </div>
       </ng-template>
-      <ng-template [ngIf]="!pokemons && pokemons.length == 0">
+      <ng-template [ngIf]="!pokemons || pokemons.length == 0">
         <p>No results.</p>
       </ng-template>
     </ng-template>
   </div>
   <!-- end of results -->
+  <!-- Pagination -->
+  <ng-template [ngIf]="pokemons && pokemons.length > 0">
+    <section class="w90 pagination">
+      <div
+        *ngFor="let i of pages"
+        (click)="goPage(i)"
+        class="pagi"
+        [class.active]="i == page"
+      >
+        {{ i }}
+      </div>
+    </section>
+  </ng-template>
+  <!-- end of pagination -->
 </div>
