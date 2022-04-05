@@ -1,4 +1,11 @@
 @import "../../../assets/scss/custom.scss";
+.modal-header {
+  .title {
+    color: $main-color;
+    text-transform: capitalize;
+    font-weight: 600;
+  }
+}
 .modal-body {
   img {
     width: 100%;
@@ -9,6 +16,21 @@
     li {
       display: flex;
       justify-content: space-between;
+      text-transform: capitalize;
+    }
+  }
+}
+.modal-footer {
+  button {
+    padding: 0.25rem 0.5rem;
+    border: none;
+    outline: none;
+    border-radius: 0.25rem;
+    box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.2);
+    background-color: $main-color;
+    color: #fff;
+    &:hover {
+      background-color: $main-color-dark;
     }
   }
 }

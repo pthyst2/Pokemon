@@ -33,36 +33,19 @@ export class HomeComponent implements OnInit {
     ];
   }
   loadPokemons() {
-    this.beastService.getList().subscribe(
+    let data = {
+      limit: 10,
+      offset: 0,
+    };
+    this.beastService.getList(data).subscribe(
       (res: any) => {
         this.loading = false;
-        let data = res.results;
-        this.handlePokemons(data);
+        this.pokemons = res.results;
       },
       (err) => {
         this.loading = false;
         console.error('Error when getting beast list: ', err.error.message);
       }
     );
-  }
-  handlePokemons(data: any) {
-    this.pokemons = [];
-    for (let d of data) {
-      if (this.pokemons.length < this.limits) {
-        let pokemonId = d.url
-          .replace('https://pokeapi.co/api/v2/pokemon/', ' ')
-          .replace('/', ' ')
-          .trim();
-
-        this.pokemons.push({
-          _id: pokemonId,
-          name: d.name,
-          url: d.url,
-          image: 'assets/images/pokemons/' + pokemonId + '.png',
-        });
-      } else {
-        break;
-      }
-    }
   }
 }

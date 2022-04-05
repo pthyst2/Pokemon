@@ -20,7 +20,7 @@ export class BeastDetailComponent implements OnInit {
   }
 
   loadBeastInfo() {
-    this.beastService.getById(this.beast._id).subscribe(
+    this.beastService.getById(this.beast.id).subscribe(
       (res: any) => {
         this.loading = false;
         this.handleInfo(res);
@@ -36,7 +36,6 @@ export class BeastDetailComponent implements OnInit {
       abilities: data.abilities,
       baseExperience: data.base_experience,
       height: data.height,
-      id: data.id,
       name: data.name,
       species: data.species,
       types: data.types,

@@ -1,6 +1,7 @@
 @import "../../../assets/scss/custom.scss";
 .home {
   padding-top: $header-and-menu-size;
+  padding-bottom: 2rem;
   section {
     .title-wrapper {
       display: flex;
@@ -14,16 +15,16 @@
         font-weight: 600;
         border-bottom: 2px solid $red-color-dark;
       }
-      button {
+      .button {
         padding: 0.25rem 0.75rem;
         border-radius: 0.25rem;
         background-color: $black-color;
         color: #fff;
         box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.2);
         font-size: 1rem;
-
         &:hover {
           background-color: $red-color-dark;
+          text-decoration: none;
         }
       }
     }

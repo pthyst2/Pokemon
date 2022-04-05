@@ -5,7 +5,6 @@
   <ng-template [ngIf]="loading == false">
     <span class="title">{{ beast.name }}</span>
   </ng-template>
-  <span (click)="close()"><i class="fas fa-times"></i></span>
 </div>
 <div class="modal-body">
   <div class="grid grid-cols-2">
@@ -16,21 +15,41 @@
     <!-- end of image -->
     <!-- Info -->
     <div class="col-spans-1">
-      <ng-template [ngIf]="info">
-        <ul>
-          <li>
-            <strong>Name</strong><span>{{ info.name }}</span>
-          </li>
-          <li>
-            <strong>Height</strong><span>{{ info.height }}</span>
-          </li>
-          <li>
-            <strong>Weight</strong><span>{{ info.weight }}</span>
-          </li>
-        </ul>
+      <ng-template [ngIf]="loading == true">
+        <app-loading></app-loading>
       </ng-template>
-      <ng-template [ngIf]="!info">
-        <p>No data found.</p>
+      <ng-template [ngIf]="loading == false">
+        <ng-template [ngIf]="info">
+          <ul>
+            <li>
+              <strong>Name</strong><span>{{ info.name }}</span>
+            </li>
+            <li>
+              <strong>Height</strong><span>{{ info.height }}</span>
+            </li>
+            <li>
+              <strong>Weight</strong><span>{{ info.weight }}</span>
+            </li>
+            <li>
+              <strong>Base Experience</strong
+              ><span>{{ info.baseExperience }}</span>
+            </li>
+            <li>
+              <strong>Species</strong><span>{{ info.species.name }}</span>
+            </li>
+            <li>
+              <strong>Types</strong>
+              <p>
+                <span *ngFor="let type of info.types">{{
+                  type.type.name
+                }}</span>
+              </p>
+            </li>
+          </ul>
+        </ng-template>
+        <ng-template [ngIf]="!info">
+          <p>No data found.</p>
+        </ng-template>
       </ng-template>
     </div>
     <!-- end of info -->

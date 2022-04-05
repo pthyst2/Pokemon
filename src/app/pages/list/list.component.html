@@ -1,1 +1,37 @@
-<p>list works!</p>
+<app-menu></app-menu>
+<div class="list w100">
+  <!-- Search engine-->
+  <section class="w100 search-engine">
+    <div class="w90 wrapper">
+      <input type="text" [(ngModel)]="keyword" spellcheck="false" />
+      <select [(ngModel)]="limit">
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+    </div>
+  </section>
+  <!-- end of search engine -->
+  <!-- Results -->
+  <div class="w90 results">
+    <ng-template [ngIf]="loading == true">
+      <app-loading></app-loading>
+    </ng-template>
+    <ng-template [ngIf]="loading == false">
+      <ng-template [ngIf]="pokemons && pokemons.length > 0">
+        <div
+          class="grid gap-4 2xl:grid-cols-5 xl:grid-cols-5 md:grid-cols-4 sm:grid-cols-2 xs:grid-cols-1"
+        >
+          <div *ngFor="let pokemon of pokemons" class="col-span-1">
+            <app-pokemon-beast [beast]="pokemon"></app-pokemon-beast>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template [ngIf]="!pokemons && pokemons.length == 0">
+        <p>No results.</p>
+      </ng-template>
+    </ng-template>
+  </div>
+  <!-- end of results -->
+</div>

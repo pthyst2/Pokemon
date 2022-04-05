@@ -8,8 +8,14 @@ import { environment } from 'src/environments/environment';
 export class BeastService {
   route = environment.apiUrl + 'pokemon/';
   constructor(private http: HttpClient) {}
-  getList(): Observable<any> {
-    return this.http.get(this.route);
+  getList(data?: any): Observable<any> {
+    if (data) {
+      return this.http.get(
+        this.route + '?limit=' + data.limit + '&offset=' + data.offset
+      );
+    } else {
+      return this.http.get(this.route);
+    }
   }
   getById(id: any): Observable<any> {
     return this.http.get(this.route + id);

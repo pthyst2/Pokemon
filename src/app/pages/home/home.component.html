@@ -17,17 +17,14 @@
       <section class="pokemons">
         <div class="title-wrapper">
           <p class="title">Pókemons</p>
-          <button type="button">See more</button>
+          <a [routerLink]="['/list']" class="button">See more</a>
         </div>
         <div class="content">
           <ng-template [ngIf]="pokemons && pokemons.length > 0">
             <div
-              class="grid 2xl:grid-cols-4 xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1"
+              class="grid gap-4 2xl:grid-cols-4 xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1"
             >
-              <div
-                *ngFor="let pokemon of pokemons"
-                class="col-span-1 px-2 mb-4"
-              >
+              <div *ngFor="let pokemon of pokemons" class="col-span-1">
                 <app-pokemon-beast [beast]="pokemon"></app-pokemon-beast>
               </div>
             </div>
