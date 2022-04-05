@@ -1,3 +1,4 @@
+<!-- Menu large -->
 <nav class="menu menu-large w100">
   <ul class="w90">
     <li>
@@ -26,11 +27,54 @@
     <li><p class="cat">Items</p></li>
   </ul>
 </nav>
+<!-- end of menu large -->
+
+<!-- Menu mobile -->
 <nav class="menu menu-mobile w100">
-  <ul class="w90">
-    <li><a [routerLink]="['/home']">Games</a></li>
-    <li><a [routerLink]="['/home']">Generations</a></li>
-    <li><a [routerLink]="['/home']">Locations</a></li>
-    <li><a [routerLink]="['/home']">Items</a></li>
-  </ul>
+  <div class="w90">
+    <ng-template [ngIf]="showMenu == false">
+      <div class="toggle-icon" (click)="showMenu = true">
+        <i class="fas fa-bars"></i>
+      </div>
+    </ng-template>
+  </div>
 </nav>
+<ng-template [ngIf]="showMenu == true">
+  <section class="menu-mobile-expand">
+    <div class="close-icon" (click)="showMenu = false">
+      <i class="fas fa-times"></i>
+    </div>
+    <ul>
+      <li (click)="showGames = !showGames">
+        <p class="cat">Games</p>
+        <ng-template [ngIf]="games && games.length > 0 && showGames == true">
+          <ul class="sub-menu">
+            <li *ngFor="let game of games">
+              <p class="sub">{{ game.name }}</p>
+            </li>
+          </ul>
+        </ng-template>
+      </li>
+      <li (click)="showGenerations = !showGenerations">
+        <p class="cat">Generations</p>
+        <ng-template
+          [ngIf]="
+            generations && generations.length > 0 && showGenerations == true
+          "
+        >
+          <ul class="sub-menu">
+            <li *ngFor="let generations of generations">
+              <p class="sub">
+                {{ generations.name }}
+              </p>
+            </li>
+          </ul>
+        </ng-template>
+      </li>
+      <li><p class="cat">Locations</p></li>
+      <li><p class="cat">Items</p></li>
+    </ul>
+  </section>
+</ng-template>
+
+<!-- end of menu-mobile -->

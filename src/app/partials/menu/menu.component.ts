@@ -9,6 +9,10 @@ export class MenuComponent implements OnInit {
   games: any = [];
   generations: any = [];
 
+  showGames = false;
+  showGenerations = false;
+  showMenu = false;
+
   constructor(private gameService: GameService) {}
 
   ngOnInit(): void {
